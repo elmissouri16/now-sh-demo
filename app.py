@@ -1,6 +1,7 @@
-from flask import Flask, jsonify, Response, request
+from flask import Flask, jsonify, Response
+import requests
 app = Flask(__name__)
 @app.route('/', methods=['GET'])
 def getme():
-   
-    return str('working')
+    rsp = requests.get('https://api.kanye.rest/?format=json')
+    return jsonify(rsp.content)
